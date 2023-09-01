@@ -8,7 +8,7 @@ import { LINES } from '../constants/walls';
   styleUrls: ['./floor-plan.component.scss']
 })
 export class FloorPlanComponent {
-  json_url: string = 'https://raw.githubusercontent.com/va-made-web-projects/space-time-mapping-angular/main/src/assets/floorplan.json';
+  json_url: string = 'https://raw.githubusercontent.com/va-made-web-projects/space-time-mapping-angular/main/src/assets/json_floorplan.json';
 
   private map: any;
   JSONLINES: any[] = [];
