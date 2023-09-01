@@ -1,0 +1,248 @@
+{
+  "spaces": [
+    {
+      "name": "Outside Prosthetics restroom",
+      "description": "the restroom outside the prosthetics department",
+      "types": ["ineligible"],
+      "occupancy_limit": 0,
+      "occupancy": 0,
+      "constraints": [[251, -164.393], [109.779541015625, -319.90]]
+    },
+    {
+      "name": "Outside Prosthetics restroom",
+      "description": "the restroom outside the prosthetics department",
+      "types": ["ineligible"],
+      "occupancy_limit": 0,
+      "occupancy": 0,
+      "constraints": [[242, 20.2], [109.51513671875, -134.1002]]
+    },
+    {
+      "name": "MSA front desk/office space (cubes)",
+      "description": "front office space for the MSA",
+      "types": ["office", "float"],
+      "occupancy_limit": 0,
+      "occupancy": 10,
+      "constraints": [[385, 249.31], [275.6630859375, 23.196]]
+    },
+    {
+      "name": "MSA office space/storage",
+      "description": "MSA office space and storage",
+      "types": ["office", "float"],
+      "occupancy_limit": 0,
+      "occupancy": 10,
+      "constraints": [[256, 244.22], [115.29345703125, 65.7]]
+    },
+    {
+      "name": "Restroom",
+      "description": "hallway restroom",
+      "types": ["ineligible"],
+      "occupancy_limit": 0,
+      "occupancy": 0,
+      "constraints": [[494, 145], [410.283935546875, 84]]
+    },
+    {
+      "name": "Restroom",
+      "description": "hallway restroom",
+      "types": ["ineligible"],
+      "occupancy_limit": 0,
+      "occupancy": 0,
+      "constraints": [[495, 246], [411.76611328125, 187.24]]
+    },
+    {
+      "name": "Backroom Prosthetic Storage",
+      "description": "backroom storage for prosthetics",
+      "types": ["office"],
+      "occupancy_limit": 0,
+      "occupancy": 0,
+      "constraints": [[371, 1336.4], [106.802490234375, 399.764]]
+    },
+    {
+      "name": "small parallel bar room",
+      "description": "room containing a small parallel bar",
+      "types": ["clinic"],
+      "occupancy_limit": 0,
+      "occupancy": 0,
+      "constraints": [[535, 498.08], [404.980712890625, 399.29]]
+    },
+    {
+      "name": "casting room",
+      "description": "casting room for prosthetics",
+      "types": ["clinic"],
+      "occupancy_limit": 0,
+      "occupancy": 0,
+      "constraints": [[527, 640.88], [403.1552734375, 532.952]]
+    },
+    {
+      "name": "clinic room",
+      "description": "clinic room for prosthetics",
+      "types": ["clinic"],
+      "occupancy_limit": 0,
+      "occupancy": 5,
+      "constraints": [[532, 775.63], [408.055908203125, 676.6]]
+    },
+    {
+      "name": "clinic room",
+      "description": "clinic room for prosthetics",
+      "types": ["clinic"],
+      "occupancy_limit": 0,
+      "occupancy": 4,
+      "constraints": [[529, 918.099], [400.916015625, 805.326]]
+    },
+    {
+      "name": "Large parallel bar room",
+      "description": "room containing large parallel bars",
+      "types": ["clinic"],
+      "occupancy_limit": 0,
+      "occupancy": 6,
+      "constraints": [[531, 1325.1], [400.895263671875, 957.31]]
+    },
+    {
+      "name": "WC Mainance",
+      "description": "wheelchair maintenance room",
+      "types": ["office"],
+      "occupancy_limit": 0,
+      "occupancy": 6,
+      "constraints": [[375, 1726.5], [115.599853515625, 1453]]
+    },
+    {
+      "name": "Restroom",
+      "description": "office restroom",
+      "types": ["ineligible"],
+      "occupancy_limit": 0,
+      "occupancy": 0,
+      "constraints": [[568, 1530.89], [497.59814453125, 1452.0]]
+    },
+    {
+      "name": "Restroom",
+      "description": "office restroom",
+      "types": ["ineligible"],
+      "occupancy_limit": 0,
+      "occupancy": 0,
+      "constraints": [[466, 1532.1], [399.22998046875, 1465.9]]
+    },
+    {
+      "name": "Golf Simulator/Office space (cubes)",
+      "description": "room containing golf simulator and office space",
+      "types": ["office", "float", "clinic"],
+      "occupancy_limit": 0,
+      "occupancy": 6,
+      "constraints": [[587, 1726.42], [396.1533203125, 1556]]
+    },
+    {
+      "name": "Fitting Room",
+      "description": "fitting room for prosthetics",
+      "types": ["clinic"],
+      "occupancy_limit": 0,
+      "occupancy": 1,
+      "constraints": [[943, 31], [611.759765625, -179.4985]]
+    },
+    {
+      "name": "Office Space (cubes)",
+      "description": "cubes office space",
+      "types": ["office", "float"],
+      "occupancy_limit": 0,
+      "occupancy": 8,
+      "constraints": [[920, 241.0], [610.24853515625, 70.790]]
+    },
+    {
+      "name": "Dennis Office",
+      "description": "",
+      "types": ["office"],
+      "occupancy_limit": 0,
+      "occupancy": 1,
+      "constraints": [[1068, 299.055], [954.916259765625, 174.23]]
+    },
+    {
+      "name": "Plaster room",
+      "description": "plaster room for prosthetics",
+      "types": ["ineligible"],
+      "occupancy_limit": 6,
+      "occupancy": 0,
+      "constraints": [[1082, 586], [956.09326171875, 344.80]]
+    },
+    {
+      "name": "Plastic Room",
+      "description": "plaster room for prosthetics",
+      "types": ["ineligible"],
+      "occupancy_limit": 5,
+      "occupancy": 0,
+      "constraints": [[1083, 737.35], [911.58642578125, 630.7]]
+    },
+    {
+      "name": "Grinding Room",
+      "description": "grinding room for prosthetics",
+      "types": ["ineligible"],
+      "occupancy_limit": 5,
+      "occupancy": 0,
+      "constraints": [[1092, 1022.26], [905.95654296875, 771.7]]
+    },
+    {
+      "name": "Prosthetics Lab",
+      "description": "Lab space",
+      "types": ["ineligible"],
+      "occupancy_limit": 0,
+      "occupancy": 5,
+      "constraints": [[890, 1016], [656.720947265625, 292.7]]
+    },
+    {
+      "name": "MAL",
+      "description": "MAL room",
+      "types": ["clinic"],
+      "occupancy_limit": 0,
+      "occupancy": 4,
+      "constraints": [[1072, 1164], [833.696533203125, 1061.92]]
+    },
+    {
+      "name": "MAL",
+      "description": "MAL room",
+      "types": ["clinic"],
+      "occupancy_limit": 0,
+      "occupancy": 4,
+      "constraints": [[810, 1174.72], [655.8056640625, 1045.02]]
+    },
+    {
+      "name": "Kyle Office",
+      "description": "",
+      "types": ["office"],
+      "occupancy_limit": 0,
+      "occupancy": 1,
+      "constraints": [[1079, 1298.7], [988.4384765625, 1204.51]]
+    },
+    {
+      "name": "Sam Office",
+      "description": "",
+      "types": ["office"],
+      "occupancy_limit": 0,
+      "occupancy": 1,
+      "constraints": [[958, 1296.93], [879.205322265625, 1208]]
+    },
+    {
+      "name": "John Office",
+      "description": "",
+      "types": ["office"],
+      "occupancy_limit": 0,
+      "occupancy": 1,
+      "constraints": [[843, 1296], [763.650390625, 1208.4]]
+    },
+    {
+      "name": "TBH Office",
+      "description": "",
+      "types": ["office"],
+      "occupancy_limit": 0,
+      "occupancy": 1,
+      "constraints": [[734, 1298.3], [656.69189453125, 1202.80]]
+    },
+    {
+      "name": "Office Space (cubes)",
+      "description": "office space cubes",
+      "types": ["office", "float"],
+      "occupancy_limit": 0,
+      "occupancy": 6,
+      "constraints": [[1073, 1718.26], [653.240234375, 1328.72]]
+    }
+  ],
+  "metadata": {
+    "location": "prosthetics department",
+    "date_update": "2023-09-01"
+  }
+}
