@@ -20,7 +20,7 @@ interface SpaceType {
 export class MapComponent implements AfterViewInit {
   @ViewChild('spaceModal') spaceModal: any;
 
-  json_url: string = '/assets/spaces.json';
+  json_url: string = 'https://raw.githubusercontent.com/va-made-web-projects/space-time-mapping-angular/main/src/assets/spaces.json';
 
   spaceTypes: SpaceType[] | undefined;
 
