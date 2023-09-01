@@ -18,9 +18,11 @@
 
 .legend-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   padding: 10px;
+  border: 2px solid black;
+  margin-top: 5px;
 }
 
 .legend-item {
