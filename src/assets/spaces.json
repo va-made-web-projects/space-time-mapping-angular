@@ -134,7 +134,7 @@
       "types": ["clinic"],
       "occupancy_limit": 0,
       "occupancy": 1,
-      "constraints": [[943, 31], [611.759765625, -179.4985]]
+      "constraints": [[710, 31], [611.759765625, -50.4985]]
     },
     {
       "name": "Office Space (cubes)",
