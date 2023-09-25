@@ -1,0 +1,35 @@
+.color-box {
+  width: 200px;
+  height: 80px;
+  border: 1px solid black;
+
+}
+
+#canvas{
+  // border: solid 1px black;
+  width: 100%;
+}
+
+.greenBg-add, .greenBg-remove,
+.redBg-add, .redBg-remove,
+.blueBg-add, .blueBg-remove,
+.whiteBg-add, .whiteBg-remove {
+  transition: background-color 1000ms linear;
+}
+
+.greenBg,
+.greenBg-add.greenBg-add-active {
+    background-color: #00ff00;
+}
+.redBg,
+.redBg-add.redBg-add-active {
+    background-color: #ff0000;
+}
+.blueBg,
+.blueBg-add.blueBg-add-active {
+    background-color: #0000ff;
+}
+.whiteBg,
+.whiteBg-add.whiteBg-add-active {
+    background-color: #ffffff;
+}

@@ -1,0 +1,41 @@
+  <p-dialog *ngIf="hours.length > 0" [header]="chosenSpace.name" [(visible)]="visible" [style]="{ 'max-width': '50vw', 'width': '80%' }">
+    <div class="p-dialog-content">
+      <div class="p-grid p-fluid">
+        <div class="p-col-12">
+          <div class="dialog-content">
+            <div class="dialog-section">
+              <label>Description: <span>{{ chosenSpace.description }}</span></label>
+
+            </div>
+            <div class="dialog-section">
+              <label>Types:
+                <span *ngFor="let item of chosenSpace.types" class="card flex align-items-center gap-2 flex-wrap">
+                  <p-chip label={{item}}></p-chip>
+              </span>
+              </label>
+
+            </div>
+            <div class="dialog-section">
+              <label>Occupancy:</label>
+              <p-badge [value]="chosenSpace.occupancy"></p-badge>
+            </div>
+            <hr>
+            <div class="dialog-section" *ngIf="chosenSpace.days">
+              <label>Day:</label>
+              <p>{{chosenDay}}</p>
+            </div>
+            <div class="dialog-section" *ngIf="hours">
+              <!-- <label>hours:</label>
+              <p>{{hours}}</p> -->
+              <app-space-image [visible]="visible" [choseSpace]="chosenSpace" [day]="chosenDay" [hours]="hours"></app-space-image>
+            </div>
+
+            <!-- <div class="dialog-section">
+              <label>Space Type:</label>
+              <p-dropdown [options]="spaceTypes" [(ngModel)]="selectedType" placeholder="Select a Space Type" optionLabel="name"></p-dropdown>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-dialog>

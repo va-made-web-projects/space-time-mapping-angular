@@ -1,44 +1,62 @@
 import { SpacePlotterService } from './space-plotter.service';
 import { MapOptions, LayerOptions } from './../../../node_modules/@types/leaflet/index.d';
-import { Component, AfterViewInit, signal, ViewChild, computed, effect } from '@angular/core';
+import { Component, AfterViewInit, signal, ViewChild, computed, effect, OnDestroy } from '@angular/core';
 import * as L from 'leaflet';
 import { LINES } from '../constants/walls';
 import { SPACE } from '../constants/space';
 import { NAMES_LIST } from '../constants/names';
 import { Space } from '../map/space-plotter.service';
 
-interface SpaceType {
-  name: string;
-  code: string;
-}
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements AfterViewInit, OnDestroy {
   @ViewChild('spaceModal') spaceModal: any;
 
-  json_url: string = 'https://raw.githubusercontent.com/va-made-web-projects/space-time-mapping-angular/main/src/assets/spaces.json';
+  chosenDay: string = "Monday";
 
-  spaceTypes: SpaceType[] | undefined;
+  //json_url: string = 'https://raw.githubusercontent.com/va-made-web-projects/space-time-mapping-angular/main/src/assets/spaces.json';
+  json_url: string = "/assets/spaces.json"
 
-  chosenSpace: any;
-
-  selectedType: SpaceType | undefined;
+    chosenSpace: any;
 
     visible: boolean = false;
+    deskVisible: boolean = false;
+    showingSpace: boolean = false;
+
+
+    closeDialog() {
+      this.visible = false;
+      this.showingSpace = false;
+      this.deskVisible = false;
+    }
 
     ngOnInit() {
+
       this.visible = false;
-        this.spaceTypes = [
-            {name: 'Office', code: 'OF'},
-            {name: 'Flex', code: 'FL'},
-            {name: 'Unavailable', code: 'UN'},
-            {name: 'Restroom', code: 'RS'},
-            {name: 'Conference', code: 'CF'},
-            ];
+      this.showingSpace = false;
+      this.deskVisible = false;
+      //wait for 500 ms
+      setTimeout(() => {
+        this.visible = false;
+        this.showingSpace = false;
+        this.deskVisible = false;
+      }, 500);
+    }
+
+    onClickedOutside() {
+      this.visible = false;
+      this.showingSpace = false;
+      this.deskVisible = false;
+    }
+
+    ngOnDestroy() {
+      this.visible = false;
+      this.showingSpace = false;
+      this.deskVisible = false;
     }
 
     constructor(public spacePlotterService:SpacePlotterService) {
@@ -46,6 +64,12 @@ export class MapComponent implements AfterViewInit {
         if (this.spacePlotterService.showSpaceModal() != {} as Space) {
           this.chosenSpace = this.spacePlotterService.showSpaceModal();
           this.visible = true;
+        }
+      });
+      effect(() => {
+        if (this.spacePlotterService.showDeskModal() != {} as Space) {
+          this.chosenSpace = this.spacePlotterService.showDeskModal();
+          this.deskVisible = true;
         }
       });
 
@@ -56,7 +80,6 @@ export class MapComponent implements AfterViewInit {
     await fetch(this.json_url).then(res => res.json() )
     .then(json => {
       parsedSpace = json.spaces;
-      console.log(parsedSpace);
     });
 
     const wallStyle = {
@@ -71,12 +94,17 @@ export class MapComponent implements AfterViewInit {
 
     for (let i = 0; i < daysOfWeek.length; i++) {
       const space_list = [];
+      const desk_list = [];
       for (let j = 0; j < parsedSpace.length; j++) {
-        console.log(parsedSpace[j].name);
-        let space_rect = this.spacePlotterService.plotSpace(parsedSpace[j]);
-        space_list.push(space_rect);
+        let rects = this.spacePlotterService.plotSpace(parsedSpace[j]);
+        let desks = this.spacePlotterService.plotDesks(parsedSpace[j], daysOfWeek[i]);
+        space_list.push(rects);
+        if (desks && desks.length > 0) {
+          desk_list.push(...desks);
+
+        }
       }
-      space_rects.set(daysOfWeek[i], space_list);
+      space_rects.set(daysOfWeek[i], [...space_list, ...desk_list]);
     }
 
     const walls = L.polyline(
@@ -85,7 +113,11 @@ export class MapComponent implements AfterViewInit {
 
     const LayerGroups: any[] = [];
 
+
     space_rects.forEach((value: any[], key: string) => {
+      if (value.length == 0) {
+        return
+      }
       const layerList = [walls, ...value]
       LayerGroups.push(L.layerGroup(layerList));
   });
@@ -114,8 +146,8 @@ export class MapComponent implements AfterViewInit {
 
     };
 
-    map.on('baselayerchange', function(e) {
-    console.log(e);
+    map.on('baselayerchange', (e) => {
+      this.chosenDay = e.name;
     });
 
     L.control.layers(baseMaps,{},{collapsed:false}).addTo(map);
@@ -123,5 +155,5 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    }
+  }
 }

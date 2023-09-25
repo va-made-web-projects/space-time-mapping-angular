@@ -14,6 +14,11 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { BadgeModule } from 'primeng/badge';
 import { ChipModule } from 'primeng/chip';
+import { MapModalComponent } from './map/map-modal/map-modal.component';
+import { DeskModalComponent } from './map/desk-modal/desk-modal.component';
+
+import { SpaceImageComponent } from './map/map-modal/space-image/space-image.component';
+import { DeskHourImageComponent } from './map/desk-modal/desk-hour-image/desk-hour-image.component';
 
 
 @NgModule({
@@ -22,7 +27,11 @@ import { ChipModule } from 'primeng/chip';
     MapComponent,
     NavbarComponent,
     FloorPlanComponent,
-    OccupancyComponent
+    OccupancyComponent,
+    MapModalComponent,
+    SpaceImageComponent,
+    DeskModalComponent,
+    DeskHourImageComponent,
   ],
   imports: [
     BrowserModule,

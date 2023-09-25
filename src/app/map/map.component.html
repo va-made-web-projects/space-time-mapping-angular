@@ -17,38 +17,14 @@
   </div>
 </div>
 
-<p-dialog [header]="chosenSpace.name" [(visible)]="visible" [style]="{ 'max-width': '50vw', 'width': '80%' }">
-  <div class="p-dialog-content">
-    <div class="p-grid p-fluid">
-      <div class="p-col-12">
-        <div class="dialog-content">
-          <div class="dialog-section">
-            <label>Description: <span>{{ chosenSpace.description }}</span></label>
-
-          </div>
-          <div class="dialog-section">
-            <label>Types:
-              <span *ngFor="let item of chosenSpace.types" class="card flex align-items-center gap-2 flex-wrap">
-                <p-chip label={{item}}></p-chip>
-            </span>
-            </label>
-
-          </div>
-          <div class="dialog-section">
-            <label>Occupancy:</label>
-            <p-badge [value]="chosenSpace.occupancy"></p-badge>
-
-          </div>
-          <hr>
-          <!-- <div class="dialog-section">
-            <label>Space Type:</label>
-            <p-dropdown [options]="spaceTypes" [(ngModel)]="selectedType" placeholder="Select a Space Type" optionLabel="name"></p-dropdown>
-          </div> -->
-        </div>
-      </div>
-    </div>
+  <div  class="overlayer" [style.visibility]="visible ? 'visible' : 'hidden'" (click)="closeDialog()">
+      <app-map-modal [chosenSpace]="chosenSpace" [chosenDay]="chosenDay" [visible]="visible"></app-map-modal>
   </div>
-</p-dialog>
+  <div class="overlayer" [style.visibility]="deskVisible ? 'visible' : 'hidden'" (click)="closeDialog()">
+      <app-desk-modal [chosenSpace]="chosenSpace" [chosenDay]="chosenDay" [visible]="deskVisible"></app-desk-modal>
+  </div>
+
+
 <div class="map-container">
   <div class="map-frame">
     <div id="map"></div>
