@@ -18,8 +18,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   chosenDay: string = "Monday";
 
-  //json_url: string = 'https://raw.githubusercontent.com/va-made-web-projects/space-time-mapping-angular/main/src/assets/spaces.json';
-  json_url: string = "/assets/spaces.json"
+  json_url: string = 'https://raw.githubusercontent.com/va-made-web-projects/space-time-mapping-angular/main/src/assets/spaces.json';
+  //json_url: string = "/assets/spaces.json"
 
     chosenSpace: any;
 
