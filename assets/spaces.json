@@ -237,7 +237,7 @@
       "description": "office space cubes",
       "types": ["office", "float"],
       "occupancy_limit": 0,
-      "occupancy": 6,
+      "occupancy": 12,
       "constraints": [[1073, 1718.26], [653.240234375, 1328.72]],
       "desks":[
         [[1050, 1400], [1000, 1350]],
