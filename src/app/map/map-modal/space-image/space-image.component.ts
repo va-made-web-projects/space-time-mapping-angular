@@ -55,7 +55,7 @@ export class SpaceImageComponent implements OnInit, OnDestroy, OnChanges {
         this.ctx.fillStyle = "#000000"; //<=
         this.ctx.fillText(j, 0,  (j + 1.5) * 12);
       const current =  hours[i][j]
-      if (current == 1) {
+      if (current >= 0) {
         this.ctx.fillStyle = `rgb(
           ${Math.floor(255)},
           ${Math.floor(0)},
@@ -75,6 +75,49 @@ export class SpaceImageComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
+  mapZeroToOneto255(value: number, min: number, max: number) {
+    return Math.floor((value - min) * (255 - 0) / (max - min) + 0);
+  }
+
+  drawOverallDayRectangles(hours: any) {
+    const daysAbv = ["M", "T", "W", "Th", "F", "Sa", "Su"]
+    for (let i = 0; i < hours.length; i++) {
+      for (let j = 0; j < hours[i].length; j++) {
+        this.ctx.beginPath();
+        this.ctx.font = "10px serif";
+        this.ctx.fillStyle = "#000000"; //<=
+        this.ctx.fillText(j, j * 12, 7);
+        this.ctx.strokeStyle = 'black';
+
+        const current =  hours[i][j]
+        if (current >= 0) {
+          let redColor = this.mapZeroToOneto255(current, 0, 1)
+          this.ctx.fillStyle = `rgb(
+            ${Math.floor(redColor + 25)},
+            ${Math.floor(255 - redColor)},
+            0)`;
+          }
+        if (current == 0) {
+            this.ctx.fillStyle = `rgb(
+              ${Math.floor(0)},
+              ${Math.floor(255)},
+              0)`;
+          }
+        this.ctx.rect(j * 12, 12 * i + 10, 10, 10);
+        this.ctx.fill();
+        this.ctx.stroke();
+        this.ctx.closePath();
+      }
+      this.ctx.beginPath();
+      this.ctx.font = "10px serif";
+      this.ctx.fillStyle = "#000000"; //<=
+      this.ctx.fillText(daysAbv[i], 0,  (i + 1.5) * 12);
+      this.ctx.fill();
+      this.ctx.stroke();
+      this.ctx.closePath();
+    }
+  }
+
   drawOverallRectangles(space: Space) {
     console.log(space.days);
     let all_hours: any[] = [];
@@ -82,38 +125,23 @@ export class SpaceImageComponent implements OnInit, OnDestroy, OnChanges {
     //combine hours array into one array
     let overallHours: any[][] = [];
     let days = space.days as any[];
+    console.log(days);
     // make a list for each hour of the day
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 7; i++) {
       overallHours.push([]);
     }
 
     for (let i = 0; i < days.length; i++) {
+      let day_average = []
       for (let j = 0; j < days[i].hours.length; j++) {
-        overallHours[j].push(days[i].hours);
+        //get the average of the array of hours
+        let hourAverage = this.spacePlotterService.calculateAverage(days[i].hours[j]);
+        day_average.push(hourAverage);
       }
+      overallHours[i] = day_average;
     }
-
-    let overallAverage: any[] = [];
-    for (let i = 0; i < overallHours.length; i++) {
-      let dayAverage = []
-      for (let j = 0; j < overallHours[i].length; j++) {
-      const averageHours = this.spacePlotterService.getAverageArray(overallHours[i][j]);
-      dayAverage.push(averageHours);
-      }
-      overallAverage.push(dayAverage);
-    }
-
-    console.log(overallAverage);
-      // const averageHours = this.spacePlotterService.getAverageArray(dayHours);
-
-    // });
-    // console.log(overallHours);
-    // for (let i = 0; i < days.length; i++) {
-
-    //   overallHours = overallHours.concat(days[i].hours);
-    // }
-    // console.log(overallHours);
-
+    console.log(overallHours);
+    this.drawOverallDayRectangles(overallHours)
   }
 
   ngOnDestroy() {

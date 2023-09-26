@@ -139,4 +139,13 @@ export class SpacePlotterService {
     }
     return avgArr;
   }
+
+  public calculateAverage(arr: number[]) {
+    if (arr.length === 0) {
+      return 0; // Handle the case of an empty array to avoid division by zero.
+    }
+
+    const sum = arr.reduce((acc, current) => acc + current, 0);
+    return sum / arr.length;
+  }
 }

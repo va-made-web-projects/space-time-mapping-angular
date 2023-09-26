@@ -16,7 +16,7 @@ export class MapModalComponent implements OnInit {
   @Input({ required: true }) chosenSpace!: any;
   @Input({ required: true }) chosenDay!: any;
 
-  hours = [];
+  hours: number[] = [];
 
 
   constructor() {
@@ -30,6 +30,11 @@ export class MapModalComponent implements OnInit {
     if (this.chosenSpace.days == undefined ) {
       return
     }
+    if (this.chosenDay == 'Overall') {
+      this.hours = [0,0,0,0,0]
+      return
+    }
+
 
     let day = this.chosenSpace.days.find((selectedDay: Day) => selectedDay.day == this.chosenDay);
     if (day == undefined) {
